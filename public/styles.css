@@ -23,6 +23,18 @@ body{
     color:white; 
 }
 
+/* ***************** ALL GAMES PAGE *****************  */
+.btn-link{ 
+    color: #b76e79;  
+}
+
+.btn-link:hover{
+    color: #b76e79;
+    text-decoration: none; 
+    opacity:  0.7; 
+}
+
+/* ***************** CONTACT US PAGE *****************  */
 .about-img{
     height: 75%;
     margin-bottom: 2rem;  

@@ -1,10 +1,11 @@
-module.exports = (req,res) => {
-    req.body.start = 1; 
-    req.body.end = 10; 
+const { searchGameByLetter } = require('../../controllers/search'); 
 
+module.exports = async (req,res) => { 
+    const searchGames = await searchGameByLetter(req.token, 'a'); 
+    
     return res.render('all-games', {
-        'start': req.body.start, 
-        'end': req.body.end
+        'start': 0, 
+        searchGames
     })
 }
 
