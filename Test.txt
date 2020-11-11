@@ -1,9 +1,0 @@
-Just so I don't have to look at Discord:
-
-dev.js
-
-module.exports = {
-    PORT: 3000,
-    IGDB_CLIENT_ID: '9p19lud4fgqht1gt1umqrtlx9j7in1', 
-    IGDB_CLIENT_SECRET: 'ctir9t3xv34x549gneyol2rmfzga8d',
-}
