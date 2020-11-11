@@ -3,13 +3,24 @@ body{
     background-color: black; 
 }
 
-a{
+.nav-link{
     text-decoration: none;
+    color: white; 
+}
+.nav-link:hover{
+    opacity: 0.6; 
+    color: white; 
 }
 
-.navbar {
-    /* border-bottom: 1px solid rgb(39, 0, 131); */ 
-    text-decoration: none; 
+.navbar-brand {
+    color: white;  
+}
+.navbar-brand:hover{
+    color:white; 
+}
+
+.navbar-toggler-icon{
+    color:white; 
 }
 
 .about-img{
