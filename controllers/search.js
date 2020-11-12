@@ -77,10 +77,11 @@ const searchGameById = (token, id) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields * , cover.url; sort name asc; where id = ${id};`
+            data: `fields name,cover.url,summary,first_release_date,genres.name,involved_companies.company.name,platforms.name,rating,screenshots.url, url,game_modes.name; where id = ${id};`
         })
         .then( apiRes => {
-            resolve(apiRes.data);  
+            //searching for only game, request returns array so grab the game from first position
+            resolve(apiRes.data[0]);  
         })
         .catch( err => {
             console.log(err); 

@@ -13,7 +13,7 @@ const newLetterSearch = games => {
     sessionStorage.games = JSON.stringify(games);    
     var newGames =``; 
     for(let i = start; i < start + 10; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = '${games[i].id}:${games[i].name}'class="search-games list-group-item list-group-item-action flex-column align-items-start">
+        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
         <div class="float-left">
             <h5 class="mb-1"> ${games[i].name}</h5>
         </div>
@@ -50,7 +50,7 @@ const nextPage = () => {
     let games = JSON.parse(sessionStorage.games);   
     var newGames =``; 
     for(let i = start; i < start + 10 || start == games.length -1; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = '${games[i].id}:${games[i].name}'class="search-games list-group-item list-group-item-action flex-column align-items-start">
+        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
         <div class="float-left">
             <h5 class="mb-1"> ${games[i].name}</h5>
         </div>
@@ -68,7 +68,7 @@ const prevPage = () => {
     let games = JSON.parse(sessionStorage.games);   
     var newGames =``; 
     for(let i = start; i < start + 10; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = '${games[i].id}:${games[i].name}' class="search-games list-group-item list-group-item-action flex-column align-items-start">
+        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
         <div class="float-left">
             <h5 class="mb-1"> ${games[i].name}</h5>
         </div>
@@ -85,15 +85,7 @@ const getGameData = game => {
         id: parseInt(temp[0]), 
         name: temp[1]
     } 
-
-    $.ajax({
-        type: 'POST', 
-        url: `/game-data`,
-        contentType: 'application/json', 
-        data: JSON.stringify(data), 
-        success: (data) => {},
-        error: err => { console.log(err) }
-    })
+    window.location.href = `/game/${data.id}/${data.name}`
 }
 
 

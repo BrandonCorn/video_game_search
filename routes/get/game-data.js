@@ -1,13 +1,13 @@
 const { searchGameById } = require('../../controllers/search'); 
 
-module.exports = async (req, res) => {
-    console.log(req.params.id); 
-    console.log(req.params.name);  
-    // const game = await searchGameById(req.token, id); 
-    // if (!game.name) return res.render('game', {
-    //     message: 'Could not load game data'
-    // })
-    // return res.render('game', {
-    //     game
-    // })
+module.exports = async (req, res) => { 
+    const game = await searchGameById(req.token, req.params.id);  
+    if (!game.name) return res.render('game', {
+        game,
+        message: 'Could not load game data'
+    }) 
+    console.log(game); 
+    return res.render('game', {
+        game
+    })
 }

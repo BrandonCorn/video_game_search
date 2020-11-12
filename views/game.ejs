@@ -13,15 +13,18 @@
     <header> 
         <%- include('./partials/header'); %> 
     </header>
-    <span id = 'games' class = 'd-none' hidden> <%= JSON.stringify(searchGames) %> </span>
 
-    <div class = 'container mt-5'> 
+    <!-- <div class = 'container mt-5'> 
         <div class = 'row'> 
-            <div class = 'col d-flex justify-content-center'> 
-                <h3 class = 'display-4 text-white'> Search: <%= search %> </h3>
+            <div class = 'col d-flex justify-content-center'>
+                <% if (game) { %>  
+                <h3 class = 'display-4 text-white'> game.name %> </h3>
+                <% } else { %> 
+                    <h3 class = 'display-4 text-white'> <%= message %> </h3>
+                <% } %> 
             </div> 
         </div> 
-    </div> 
+    </div>  -->
     <div class = 'container'>
     <div class = 'row mt-5 w-100'> 
         <div class = 'col mx-4'> 
@@ -37,7 +40,9 @@
     <div class = 'row d-flex justify-content-center'> 
         <div class = 'col'> 
             <div class = 'jumbotron bg-white p-0'> 
-                
+                <% if (game.name) { %> 
+                    
+                <% } %> 
                 <%= game.name %> 
             </div> 
         </div>  
