@@ -48,7 +48,7 @@
                 <% if (searchGames[0]){ %> 
                 <div class="list-group alpha-games">
                     <% for (var i = 0; i < 10; i++){ %>
-                    <button type = 'submit' onclick = '' class="list-group-item list-group-item-action flex-column align-items-start">
+                    <button type = 'submit' onclick = 'getGameData(this.value)' value = '<%= searchGames[i].id %>:<%= searchGames[i].name%>' class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="float-left">
                             <h5 class="mb-1"> <%= searchGames[i].name %></h5>
                         </div>
