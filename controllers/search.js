@@ -14,14 +14,13 @@ const searchGameByLetter = async (token, letter) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields name; sort name asc; where name ~ "${letter}"*; limit 500;`
+            data: `fields name, cover.url; sort name asc; where name ~ "${letter}"*; limit 300;`
         })
         .then( apiRes => {
-            console.log(apiRes);
             return resolve(apiRes.data);  
         })
-        .catch( err => {
-            console.log(err); 
+        .catch( err => { 
+            console.log(typeof err)
             return reject(err); 
         })
     })
