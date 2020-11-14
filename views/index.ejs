@@ -2,7 +2,6 @@
 <head>
     <title> Video Game Search </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
 
@@ -14,14 +13,20 @@
         <%- include('./partials/header'); %> 
     </header>
 
-    <div class="jumbotron">
-        <h1 class = "display-4"><p th:text="'Welcome to Video Game Search!'"></h1>
-        <p class="lead">Stuff stuff.</p>
-        <hr class="my-4">
-        <a class="btn btn-dark" href="/random" role="button">Link</a>
-    </div>
+    <section class="jumbotron text-xs-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Video Game Search</h1>
+            <p class="lead text-muted">In this website you can find out everything about video games!</p>
+            <div>
+                <a href="/discover" class="btn btn-info">Discover the best &amp; newest games!</a>
+            </div>
+        </div>
+    </section>
 
-    <div id="placeholder"><img src= 'https://www.w3schools.com/images/lamp.jpg'></div>
+    <!-- </div> -->
+    <footer> 
+        <%- include('./partials/footer'); %> 
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
