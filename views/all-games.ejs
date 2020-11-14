@@ -60,8 +60,8 @@
                 </div>
                 <div class = 'row'> 
                     <div class = 'col'> 
-                        <button type = 'submit' onclick = 'prevPage()' class = 'btn btn-primary float-left m-3'> Prev </button>
-                        <button type = 'submit' onclick = 'nextPage()' class = 'btn btn-primary float-right m-3'> Next </button>
+                        <button type = 'submit' onclick = 'prevPageAllGames()' class = 'btn btn-primary float-left m-3'> Prev </button>
+                        <button type = 'submit' onclick = 'nextPageAllGames()' class = 'btn btn-primary float-right m-3'> Next </button>
                     </div> 
                 </div>
                 <% } else { %>  
@@ -72,7 +72,8 @@
 
         <div class = 'col-lg-6'> 
             <div class = 'jumbotron bg-white p-0'> 
-                <div class="list-group">
+                <img class = 'img-fluid' src = 'media/game_controller.jpg' alt = 'controller image' /> 
+                <!-- <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">List group item heading</h5>
@@ -94,7 +95,7 @@
                         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
                          
                     </a>
-                </div>
+                </div> -->
             </div>
         </div> 
     </div> 
@@ -112,6 +113,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Added -->  
     <script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'> </script> 
-    <script src = '/scripts.js'> </script>
+    <!-- <script src = '/scripts.js'> </script> -->
+    <script src = '/main.js'> </script> 
+    <script src = '/all-games.js'> </script> 
 </body>
 </html>

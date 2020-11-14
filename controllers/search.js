@@ -77,7 +77,7 @@ const searchGameById = (token, id) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields name,cover.url,summary,first_release_date,genres.name,involved_companies.company.name,platforms.name,rating,screenshots.url, url,game_modes.name; where id = ${id};`
+            data: `fields name,cover.url,summary,first_release_date,genres.name,involved_companies.company.name,platforms.name,rating,screenshots.url, url,game_modes.name,franchise.name,expansions.name; where id = ${id};`
         })
         .then( apiRes => {
             //searching for only game, request returns array so grab the game from first position
