@@ -88,7 +88,7 @@ body{
 
 
 /* ***************** HOME PAGE *****************  */
-.jumbotron {
+.landing-main-jumbotron {
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
@@ -99,18 +99,18 @@ body{
   background-size: cover;
 }
 
-.jumbotron-heading {
+.landing-heading {
   font-weight: 300;
 }
 
-.jumbotron .container {
+.landing-main-container {
   max-width: 40rem;
   background: rgba(255,255,255,0.2);
   padding: 2rem;
   color: white;
 }
 
-.jumbotron p {
+.landing-main-p {
     color: white;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }

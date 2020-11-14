@@ -1,9 +1,9 @@
-const { request } = require("express");
+const {v4: uuidv4} = require('uuid'); 
 
 module.exports = (req, res, next) => {
-    if (!req.session.users) req.session.users = {}
-    req.session.users['name'] = 'brandon'
-    console.log(req.session.users['name'])
+    if (!req.session.visits) req.session.visits = 1
+    else req.session.visits++
+
     next(); 
 
 }

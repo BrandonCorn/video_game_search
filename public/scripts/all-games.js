@@ -1,28 +1,23 @@
 $(window).on('load', e => {
+    $('#search-form').trigger('reset');
+    sessionStorage.start = 0;
     if (typeof(Storage) !== 'undefined'){ 
-        if (!sessionStorage.allGames) sessionStorage.allGames = JSON.stringify(JSON.parse($('#games').text()))
-        sessionStorage.start = 0; 
-    } 
-    
-    $('#search-form').trigger('reset');   
+        if (!sessionStorage.allGames) {
+            sessionStorage.allGames = JSON.stringify(JSON.parse($('#games').text())); 
+            initGameList(JSON.parse($('#games').text())) 
+        } 
+        else{
+            initGameList(JSON.parse(sessionStorage.allGames))
+        }
+    }    
 })
-
 
 
 const newLetterSearch = games => {
     let start = 0; 
     sessionStorage.start = start;
     sessionStorage.allGames = JSON.stringify(games);    
-    var newGames =``; 
-    for(let i = start; i < start + 10; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
-        <div class="float-left">
-            <h5 class="mb-1"> ${games[i].name}</h5>
-        </div>
-        ${games[i].cover ? `<img class = 'float-right' src = '${games[i].cover.url}' alt = 'game image' />` :  ``}
-        </button> `
-    }
-    $('.alpha-games').html(newGames);
+    renderGameList(start, games); 
 }
 
 const searchByLetter = letter => {

@@ -1,9 +1,6 @@
-const nextPage = games => {
-    if (parseInt(sessionStorage.start) == games.length -10) return; 
-    let start = parseInt(sessionStorage.start) + 10; 
-    sessionStorage.start = start;   
+const renderGameList = (start, games) => {
     var newGames =``; 
-    for(let i = start; i < start + 10 || start == games.length -1; i++){
+    for(let i = start; i < start + 10 && i != games.length -1; i++){
         newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
         <div class="float-left">
             <h5 class="mb-1"> ${games[i].name}</h5>
@@ -11,24 +8,26 @@ const nextPage = games => {
         ${games[i].cover ? `<img class = 'float-right' src = '${games[i].cover.url}' alt = 'game image' />` :  ``}
         </button> `
     }
-    $('.alpha-games').html(newGames); 
+    $('.alpha-games').html(newGames);
 }
 
-//NEED TO ADD ONCLICK FUNCTION TO NAVIGATE TO PAGE WITH ALL THE GAMES DETAILS
+const initGameList = games => {
+    let start = parseInt(sessionStorage.start); 
+    renderGameList(start, games); 
+}
+
+const nextPage = games => {
+    if (parseInt(sessionStorage.start) + 10 >= games.length) return; 
+    let start = parseInt(sessionStorage.start) + 10; 
+    sessionStorage.start = start;   
+    renderGameList(start, games); 
+}
+
 const prevPage = games => {
     if (parseInt(sessionStorage.start) == 0) return; 
     let start = parseInt(sessionStorage.start) - 10; 
     sessionStorage.start = start;  
-    var newGames =``; 
-    for(let i = start; i < start + 10; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
-        <div class="float-left">
-            <h5 class="mb-1"> ${games[i].name}</h5>
-        </div>
-        ${games[i].cover ? `<img class = 'float-right' src = '${games[i].cover.url}' alt = 'game image' />` :  ``}
-        </button> `
-    }
-    $('.alpha-games').html(newGames); 
+    renderGameList(start, games); 
 }
 
 const nextPageAllGames = () => {
@@ -42,7 +41,8 @@ const prevPageAllGames = () => {
 }
 
 const nextPageSearchGames = () => {
-    let games = JSON.parse(sessionStorage.searchGames); 
+    let games = JSON.parse(sessionStorage.searchGames);  
+    console.log(sessionStorage.searchGames); 
     nextPage(games); 
 }
 
@@ -60,3 +60,4 @@ const getGameData = game => {
     } 
     window.location.href = `/game/${data.id}/${data.name}`
 }
+
