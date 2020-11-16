@@ -94,8 +94,58 @@ const searchGameById = (token, id) => {
     })
 }
 
+
+const searchAllLetters = token => {
+    return new Promise( async (resolve, reject) => {
+        const gamesByLetter = {}
+        let concSearch = await Promise.all([searchGameByLetter(token, 'a'), searchGameByLetter(token, 'b'), searchGameByLetter(token, 'c'), 
+        searchGameByLetter(token, 'd'),searchGameByLetter(token, 'e'),searchGameByLetter(token, 'f'),searchGameByLetter(token, 'g'),searchGameByLetter(token, 'h'),
+        searchGameByLetter(token, 'i'),searchGameByLetter(token, 'j'),searchGameByLetter(token, 'k'),searchGameByLetter(token, 'l'),
+        searchGameByLetter(token, 'm'),searchGameByLetter(token, 'n'),searchGameByLetter(token, 'o'),searchGameByLetter(token, 'p'),
+        searchGameByLetter(token, 'q'),searchGameByLetter(token, 'r'),searchGameByLetter(token, 's'),searchGameByLetter(token, 't'),
+        searchGameByLetter(token, 'u'),searchGameByLetter(token, 'v'),searchGameByLetter(token, 'w'),searchGameByLetter(token, 'x'),
+        searchGameByLetter(token, 'y'),searchGameByLetter(token, 'z')])
+        var count = 0; 
+        // for(let i = 0; i < 26; i++){
+        //     letter = (i+10).toString(36)
+        // }
+        var letter = ''
+        for (let game of concSearch){
+            letter = (count+10).toString(36)
+            gamesByLetter[letter] = game; 
+            count++; 
+        }
+        return resolve(gamesByLetter); 
+    })
+}
+// const searchAllLetters = (token) => {
+//     return new Promise( async (resolve, reject) => {
+//         const gamesByLetter = {}
+//         let letter = ''
+//         for(let i = 0; i < 26; i++){
+//             letter = (i+10).toString(36)
+//             if (!gamesByLetter[letter]){
+//                 const games = await searchGameByLetter(token, letter)
+//                 console.log(letter); 
+//                 if (!games) return reject('issue getting games')
+//                 else {
+//                     gamesByLetter[letter] = games
+//                 }
+//             }
+//         }
+        
+//         return resolve(gamesByLetter)
+//     })
+//     .catch(err => {
+//         console.log(err); 
+//         return err; 
+//     })
+// }
+
+
 module.exports = {
     searchGameByLetter, 
     searchGameByInput, 
-    searchGameById
+    searchGameById, 
+    searchAllLetters,
 }

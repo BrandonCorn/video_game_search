@@ -15,4 +15,6 @@ app.use(bodyParser.json());
 
 app.use(require('./routes')); 
 
-app.listen(config.PORT, () => console.log(`Server started on port ${config.PORT}`))
+app.listen(config.PORT, () => {
+    console.log(`Server started on port ${config.PORT}`)
+})
