@@ -6,10 +6,10 @@ const initGamesByLetter = require('../../middleware/initGamesByLetter');
 
 
 router.get('/', token, initGamesByLetter, require('./home')); 
-router.get('/discover', require('./discover')); 
-router.get('/all-games', trackVisits, token, require('./all-games')); 
-router.get('/contact-us', require('./contact-us')); 
-router.get('/search-games/:input', sameSearch, token, require('./search-games')); 
-router.get('/game/:id/:name', token, require('./game-data')); 
+router.get('/discover', token, initGamesByLetter, require('./discover')); 
+router.get('/all-games', trackVisits, token, initGamesByLetter, require('./all-games')); 
+router.get('/contact-us', token, initGamesByLetter, require('./contact-us')); 
+router.get('/search-games/:input', sameSearch, token, initGamesByLetter, require('./search-games')); 
+router.get('/game/:id/:name', token, initGamesByLetter, require('./game-data')); 
 
 module.exports = router; 

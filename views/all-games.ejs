@@ -15,6 +15,8 @@
     </header>
     <% if (searched) { %> 
         <span id = 'games' class = 'd-none' hidden> <%= JSON.stringify(searchGames) %> </span>
+        <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
+        <span id = 'letter' class = 'd-none' hidden> <%= letter %> </span>
     <% } %> 
 
     <div class = 'container mt-5'> 

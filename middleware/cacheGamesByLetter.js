@@ -1,7 +1,7 @@
 const { searchGameByLetter } = require('../controllers/search'); 
 
 module.exports = async (req, res, next) => {
-    console.log(req.session.gamesByLetter[req.body.letter])
+    console.log('session: ', req.session.gamesByLetter[req.body.letter])
     if (!req.session.gamesByLetter) req.session.gamesByLetter = {}
     if (req.session.gamesByLetter[req.body.letter]) {
         res.locals.games = req.session.gamesByLetter[req.body.letter]

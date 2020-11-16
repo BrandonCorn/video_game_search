@@ -106,9 +106,6 @@ const searchAllLetters = token => {
         searchGameByLetter(token, 'u'),searchGameByLetter(token, 'v'),searchGameByLetter(token, 'w'),searchGameByLetter(token, 'x'),
         searchGameByLetter(token, 'y'),searchGameByLetter(token, 'z')])
         var count = 0; 
-        // for(let i = 0; i < 26; i++){
-        //     letter = (i+10).toString(36)
-        // }
         var letter = ''
         for (let game of concSearch){
             letter = (count+10).toString(36)

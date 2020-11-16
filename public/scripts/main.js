@@ -1,4 +1,4 @@
-const renderGameList = (start, games) => {
+const renderGameList = (start, games) => {  
     var newGames =``; 
     for(let i = start; i < start + 10 && i != games.length -1; i++){
         newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
@@ -10,6 +10,19 @@ const renderGameList = (start, games) => {
     }
     $('.alpha-games').html(newGames);
 }
+
+const setAllGames = games => {
+    return new Promise( (resolve, reject) => {
+        resolve()
+        console.log(games); 
+        Object.entries(games).forEach(game => {
+            const [key, value] = game; 
+            sessionStorage.setItem(key, JSON.stringify(value)); 
+        })
+        return resolve()
+    })
+}
+
 
 const initGameList = games => {
     let start = parseInt(sessionStorage.start); 
@@ -50,7 +63,6 @@ const prevPageSearchGames = () => {
     let games = JSON.parse(sessionStorage.searchGames); 
     prevPage(games); 
 }
-
 
 const getGameData = game => {
     let temp = game.split(':'); 
