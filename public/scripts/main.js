@@ -11,18 +11,6 @@ const renderGameList = (start, games) => {
     $('.alpha-games').html(newGames);
 }
 
-const setAllGames = games => {
-    return new Promise( (resolve, reject) => {
-        resolve()
-        console.log(games); 
-        Object.entries(games).forEach(game => {
-            const [key, value] = game; 
-            sessionStorage.setItem(key, JSON.stringify(value)); 
-        })
-        return resolve()
-    })
-}
-
 
 const initGameList = games => {
     let start = parseInt(sessionStorage.start); 
@@ -44,12 +32,12 @@ const prevPage = games => {
 }
 
 const nextPageAllGames = () => {
-    let games = JSON.parse(sessionStorage.allGames); 
+    let games = JSON.parse(sessionStorage.getItem(sessionStorage.getItem('currentLetter'))); 
     nextPage(games); 
 }
 
 const prevPageAllGames = () => {
-    let games = JSON.parse(sessionStorage.allGames); 
+    let games = JSON.parse(sessionStorage.getItem(sessionStorage.getItem('currentLetter'))); 
     prevPage(games); 
 }
 

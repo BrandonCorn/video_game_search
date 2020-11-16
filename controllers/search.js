@@ -54,12 +54,11 @@ const searchGameByInput = (token, input) => {
         })
         .catch( err => {
             console.log(err); 
-            reject(err); 
+            reject('Error getting data');
         })
     })
-    .catch( err => {
-        console.log(err); 
-        return err; 
+    .catch( err => { 
+        return 'Error getting game data';
     })
 }
 
@@ -84,7 +83,7 @@ const searchGameById = (token, id) => {
             resolve(apiRes.data[0]);  
         })
         .catch( err => {
-            console.log(err); 
+            console.log(err);  
             reject(err); 
         })
     })
@@ -115,29 +114,6 @@ const searchAllLetters = token => {
         return resolve(gamesByLetter); 
     })
 }
-// const searchAllLetters = (token) => {
-//     return new Promise( async (resolve, reject) => {
-//         const gamesByLetter = {}
-//         let letter = ''
-//         for(let i = 0; i < 26; i++){
-//             letter = (i+10).toString(36)
-//             if (!gamesByLetter[letter]){
-//                 const games = await searchGameByLetter(token, letter)
-//                 console.log(letter); 
-//                 if (!games) return reject('issue getting games')
-//                 else {
-//                     gamesByLetter[letter] = games
-//                 }
-//             }
-//         }
-        
-//         return resolve(gamesByLetter)
-//     })
-//     .catch(err => {
-//         console.log(err); 
-//         return err; 
-//     })
-// }
 
 
 module.exports = {

@@ -3,10 +3,14 @@ $(window).on('load', async e => {
     sessionStorage.start = 0;
     if (typeof(Storage) !== 'undefined'){ 
         if (!sessionStorage.getItem($('#letter').text())){
+            sessionStorage.setItem('currentLetter', 'a')
             sessionStorage.setItem($('#letter').text(), JSON.stringify(JSON.parse($('#games').text())))
             initGameList(JSON.parse($('#games').text()))
+            let allGames = JSON.parse($('#all-games').text()); 
+            await setAllGames(allGames); 
         }
         else{
+            sessionStorage.setItem('currentLetter', 'a'); 
             let games = JSON.parse(sessionStorage.getItem($('#letter').text()))
             let allGames = JSON.parse($('#all-games').text())  
             initGameList(games)
@@ -25,6 +29,7 @@ const newLetterSearch = (games, letter) => {
 
 const searchByLetter = letter => {
     if (sessionStorage[letter]) {
+        sessionStorage.setItem('currentLetter', letter); 
         let games = JSON.parse(sessionStorage.getItem(letter))
         renderGameList(parseInt(sessionStorage.start), games)
         return; 
@@ -38,6 +43,7 @@ const searchByLetter = letter => {
         contentType: 'application/json', 
         data: JSON.stringify(search), 
         success: (data) => {
+            sessionStorage.setItem('currentLetter', letter); 
             newLetterSearch(data, letter); 
         },
         error: (err) => {
@@ -46,3 +52,15 @@ const searchByLetter = letter => {
      }) 
 }
 
+const setAllGames = games => {
+    return new Promise( (resolve, reject) => {
+        resolve()
+        console.log(games); 
+        Object.entries(games).forEach(game => {
+            const [key, value] = game; 
+            // sessionStorage.setItem(key, JSON.stringify(value)); 
+            if(sessionStorage.getItem(key) != JSON.stringify(value)) sessionStorage.setItem(key, JSON.stringify(value))
+        })
+        return resolve()
+    })
+}
