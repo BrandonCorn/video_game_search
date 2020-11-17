@@ -1,20 +1,11 @@
 const { searchGameByInput } = require('../../controllers/search'); 
 
-module.exports = async (req, res) => {
-    if (!!req.session.sameSearch) return res.render('search-games', {
-        input: req.params.input, 
-        sameSearch: req.session.sameSearch,
-    })
- 
-    const searchGames = await searchGameByInput(req.token, req.params.input)
-    if (!searchGames[0]) return res.render('search-games', {
-        searchGames, 
-        input: 'No games found'
-    });
+module.exports = async (req, res) => { 
 
     return res.render('search-games', {
-        searchGames, 
+        searchGames: req.session[req.params.input], 
         input: req.params.input, 
-        sameSearch: req.session.sameSearch, 
+        newSearch: res.locals.newSearch, 
+        allGames: req.session.gamesByLetter 
     }); 
 }

@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
         message: 'Could not load game data'
     }) 
     console.log(game); 
-    return res.render('game', {
+    return res.render('game-data', {
         game
     })
 }

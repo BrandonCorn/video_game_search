@@ -4,7 +4,7 @@ module.exports = async (req, res, next) => {
     if (!req.session.gamesByLetter) {
         req.session.gamesByLetter = {}
         req.session.gamesByLetter = await searchAllLetters(req.token)
-        next()
+        return next()
     }
     next()
 }

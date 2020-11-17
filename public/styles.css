@@ -1,6 +1,7 @@
 body{
     /* background-color: #343a40; */
     background-color: black; 
+    overflow-x: hidden; 
 }
 
 .nav-link{
@@ -35,6 +36,31 @@ body{
     opacity:  0.7; 
 }
 
+.all-games-img{
+    height: 60%; 
+    width: 100%; 
+    background-position: center center; 
+    
+}
+
+.all-games-container{
+    width: 100vw; 
+    position: relative;
+    height: 45%; 
+    background-image: url(media/game_controller2.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+    overflow: hidden; 
+}
+
+.all-games-centered-content{
+    position: absolute;
+    top: 50%; 
+	left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* ***************** CONTACT US PAGE *****************  */
 .about-img{
     height: 75%;
@@ -60,6 +86,9 @@ body{
     .text-4{
         font-size: 1rem; 
     }
+    .all-games-container{
+        height: 75%; 
+    }
 }
 
 
@@ -67,11 +96,20 @@ body{
     .text-4{
         font-size: 1.2rem; 
     }
+    .all-games-container{
+        height: 85%; 
+    }
+    .all-games-centered-content{
+        top: 50%; 
+    }
  }
 
 @media (min-width: 992px) { 
     .text-4{
         font-size: 1.4rem; 
+    }
+    .all-games-container{
+        height: 90%; 
     }
  }
 

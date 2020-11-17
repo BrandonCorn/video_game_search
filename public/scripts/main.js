@@ -1,3 +1,35 @@
+$(window).on('load', async e => {
+    $('#search-form').trigger('reset');
+    sessionStorage.start = 0;
+    if (typeof(Storage) !== 'undefined'){ 
+        if(!validateGamesByLetterSet()){
+            let allGames = JSON.parse($('#all-games').text()); 
+            await setAllGames(allGames); 
+        }
+    }    
+})
+
+const validateGamesByLetterSet = () => {
+    if(!sessionStorage.getItem('games-by-letter-set')) {
+        sessionStorage.setItem('games-by-letter-set', 'true')
+        return false; 
+    }
+    else {
+        return true; 
+    }
+}
+
+const setAllGames = games => {
+    return new Promise( (resolve, reject) => {
+        resolve()
+        Object.entries(games).forEach(game => {
+            const [key, value] = game; 
+            if(sessionStorage.getItem(key) != JSON.stringify(value)) sessionStorage.setItem(key, JSON.stringify(value))
+        })
+        return resolve()
+    })
+}
+
 const renderGameList = (start, games) => {  
     var newGames =``; 
     for(let i = start; i < start + 10 && i != games.length -1; i++){
@@ -17,39 +49,20 @@ const initGameList = games => {
     renderGameList(start, games); 
 }
 
-const nextPage = games => {
-    if (parseInt(sessionStorage.start) + 10 >= games.length) return; 
+const nextPage = input => {
+    let games = JSON.parse(sessionStorage.getItem(input));
+    if (parseInt(sessionStorage.start) + 10 >= games.length) return;   
     let start = parseInt(sessionStorage.start) + 10; 
     sessionStorage.start = start;   
     renderGameList(start, games); 
 }
 
-const prevPage = games => {
-    if (parseInt(sessionStorage.start) == 0) return; 
+const prevPage = input => {
+    let games = JSON.parse(sessionStorage.getItem(input));
+    if (parseInt(sessionStorage.start) == 0) return;
     let start = parseInt(sessionStorage.start) - 10; 
     sessionStorage.start = start;  
     renderGameList(start, games); 
-}
-
-const nextPageAllGames = () => {
-    let games = JSON.parse(sessionStorage.getItem(sessionStorage.getItem('currentLetter'))); 
-    nextPage(games); 
-}
-
-const prevPageAllGames = () => {
-    let games = JSON.parse(sessionStorage.getItem(sessionStorage.getItem('currentLetter'))); 
-    prevPage(games); 
-}
-
-const nextPageSearchGames = () => {
-    let games = JSON.parse(sessionStorage.searchGames);  
-    console.log(sessionStorage.searchGames); 
-    nextPage(games); 
-}
-
-const prevPageSearchGames = () => {
-    let games = JSON.parse(sessionStorage.searchGames); 
-    prevPage(games); 
 }
 
 const getGameData = game => {

@@ -14,15 +14,15 @@
         <%- include('./partials/header'); %> 
     </header>
     
-    <% if (!(!!sameSearch)) { %> 
-        <span id = 'games' class = 'd-none' hidden> <%- JSON.stringify(searchGames) %> </span>
-    <% } %> 
-    <span id = 'same-search' class = 'd-none' hidden> <%=sameSearch%> </span>
+    
+    <span id = 'games' class = 'd-none' hidden> <%- JSON.stringify(searchGames) %> </span>
+    <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
+    <span id = 'new-search' class = 'd-none' hidden> <%=newSearch%> </span>
 
     <div class = 'container mt-5'> 
         <div class = 'row'> 
             <div class = 'col d-flex justify-content-center'> 
-                <h3 id = 'search-input' class = 'display-4 text-white' value = '<%=sameSearch%>'> Search: <%= input %> </h3>
+                <h3 id = 'search-input' class = 'display-4 text-white'><%=input%></h3>
             </div> 
         </div> 
     </div> 
@@ -47,8 +47,8 @@
                 </div>
                 <div class = 'row'> 
                     <div class = 'col'> 
-                        <button type = 'submit' onclick = 'prevPageSearchGames()' class = 'btn btn-primary float-left m-3'> Prev </button>
-                        <button type = 'submit' onclick = 'nextPageSearchGames()' class = 'btn btn-primary float-right m-3'> Next </button>
+                        <button type = 'submit' onclick = 'prevPage(this.value)' value = '<%=input%>' class = 'btn btn-primary float-left m-3'> Prev </button>
+                        <button type = 'submit' onclick = 'nextPage(this.value)' value = '<%=input%>' class = 'btn btn-primary float-right m-3'> Next </button>
                     </div> 
                 </div>
                  

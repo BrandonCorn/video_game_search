@@ -9,66 +9,42 @@
     <link href="/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body style = 'height: 100vh'>
     <header> 
         <%- include('./partials/header'); %> 
     </header>
     <% if (searched) { %> 
-        <span id = 'games' class = 'd-none' hidden> <%= JSON.stringify(searchGames) %> </span>
         <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
-        <span id = 'letter' class = 'd-none' hidden> <%= letter %> </span>
     <% } %> 
 
-    <div class = 'container mt-5'> 
+    <!-- <div class = 'container mt-5'> 
         <div class = 'row'> 
             <div class = 'col d-flex justify-content-center'> 
                 <h3 class = 'display-4 text-white'> All Games </h3>
             </div> 
         </div> 
-    </div> 
-    <div class = 'row mt-5 w-100'> 
-        <div class = 'col mx-4'> 
+    </div>  -->
+    <div class='my-5 min-vw-100 all-games-container mx-0'>
+        <div class='all-games-centered-content'>
+            <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3 bg-transparent'>
+                <% for (var i = 0; i < 26; i++){ %>
+                <li class='list-group-item border-0 px-2 px-sm-2 bg-transparent text-center'> <button type='submit'
+                        value='<%= (i+10).toString(36)%>' onclick='searchByLetter(this.value)' class='btn btn-link p-0'>
+                        <%= (i+10).toString(36) %> </button> </li>
+                <% } %>
+            </ul>
             <div class="input-group mb-3">
-                <form action = '/search-games' method = 'POST' id = 'search-form' class = 'form-inline'> 
-                    <input type="text" class="form-control" id="basic-url" name = 'input' placeholder = 'Search Games' aria-describedby="basic-addon3" required>
-                    <button type = 'submit' class = 'btn btn-primary ml-sm-2 mt-2 mt-md-0'> Search </button>
+                <form action='/search-games' method='POST' id='search-form' class='form-inline'>
+                    <input type="text" class="form-control bg-transparent" id="basic-url" name='input'
+                        placeholder='Search Games' aria-describedby="basic-addon3" style='background-color: rgba(0,0,0,.7);'
+                        required>
+                    <button type='submit' class='btn btn-dark ml-sm-2 mt-2 mt-md-0' style='opacity: 0.7'> Search </button>
                 </form>
             </div>
         </div>
-    </div> 
-
-    <div class = 'row w-100 m-0'> 
-        <div class = 'col col-lg-6 '> 
-            <div class = 'jumbotron bg-white p-0'> 
-                <div class = 'row'>
-                    <div class = 'col d-flex justify-content-center'> 
-                        <ul class = 'list-group list-group-horizontal flex-wrap mx-2'> 
-                            <% for (var i = 0; i < 26; i++){ %>
-                                <li class = 'list-group-item border-0 px-2 px-sm-1'> <button type = 'submit' value = '<%= (i+10).toString(36)%>' onclick = 'searchByLetter(this.value)' class = 'btn btn-link p-0'> <%= (i+10).toString(36) %> </button> </li> 
-                            <% } %> 
-                        </ul>
-                    </div>  
-                </div> 
-
-                <div class="list-group alpha-games">
-
-
-                </div>
-                <div class = 'row'> 
-                    <div class = 'col'> 
-                        <button type = 'submit' onclick = 'prevPageAllGames()' class = 'btn btn-primary float-left m-3'> Prev </button>
-                        <button type = 'submit' onclick = 'nextPageAllGames()' class = 'btn btn-primary float-right m-3'> Next </button>
-                    </div> 
-                </div>
-            </div> 
-        </div> 
-
-        <div class = 'col-lg-6'> 
-            <div class = 'jumbotron bg-white p-0'> 
-                <img class = 'img-fluid' src = 'media/game_controller.jpg' alt = 'controller image' /> 
-            </div>
-        </div> 
-    </div> 
+    
+    </div>
+    
     <footer> 
         <%- include('./partials/footer'); %> 
     </footer>

@@ -12,12 +12,12 @@ const searchGameByLetter = async (token, letter) => {
             url: 'https://api.igdb.com/v4/games/', 
             method: 'POST', 
             headers: {
-                'Accept': 'application/json',  
+                'Accept': 'application/json',
                 'Client-ID': config.IGDB_CLIENT_ID,
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields name, cover.url; sort name asc; where name ~ "${letter}"*; limit 300;`
+            data: `fields name, cover.url; sort name asc; where name ~ "${letter}"*; limit 500;`
         })
         .then( apiRes => {
             return resolve(apiRes.data);  
@@ -47,7 +47,7 @@ const searchGameByInput = (token, input) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields name, cover.url; sort name asc; where name ~ *"${input}"*; limit 50;`
+            data: `fields name, cover.url; sort name asc; where name ~ *"${input}"*; limit 100;`
         })
         .then( apiRes => {
             resolve(apiRes.data);  
