@@ -47,7 +47,7 @@ body{
     width: 100vw; 
     position: relative;
     height: 45%; 
-    background-image: url(media/game_controller2.jpg); 
+    background-image: url(media/game_controller.jpg); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center center;
@@ -59,6 +59,33 @@ body{
     top: 50%; 
 	left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* ***************** SEARCH GAMES PAGE *****************  */
+
+.search-games-container{
+    width: 100vw; 
+    position: relative;
+    height: 45%; 
+    background-image: url(media/game_controller2.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+    overflow: hidden; 
+}
+
+.card{
+    width: 2vw; 
+}
+
+.card-img-top{
+    object-fit: contain; 
+    height: 12vw; 
+}
+
+.card-img-missing{
+    background: url(media/no_image.svg);
+    object-fit: cover; 
 }
 
 /* ***************** CONTACT US PAGE *****************  */
@@ -81,7 +108,7 @@ body{
     font-size: 1rem;  
 }
 
-
+/* ***************** MEDIA QUERIES *****************  */
 @media (min-width: 576px) { 
     .text-4{
         font-size: 1rem; 

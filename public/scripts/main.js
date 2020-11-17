@@ -5,6 +5,7 @@ $(window).on('load', async e => {
         if(!validateGamesByLetterSet()){
             let allGames = JSON.parse($('#all-games').text()); 
             await setAllGames(allGames); 
+            $('#games').html('')
         }
     }    
 })
@@ -43,10 +44,23 @@ const renderGameList = (start, games) => {
     $('.alpha-games').html(newGames);
 }
 
+const renderGameList2 = (start, games) => { 
+    var newGames = ``; 
+    for(let i = start; i < start + 5 && i != games.length -1; i++){
+        newGames += `<div class="card bg-transparent">
+            ${games[i].cover ? `<img class="card-img-top" src="${games[i].cover.url}" alt="Game Cover">` : `<img class = 'card-img-top card-img-missing'>`}
+            <div class="card-body">
+                <p class="card-text text-light text-center"> ${games[i].name}</p>
+            </div>
+        </div>`
+    }
+    $('.alpha-games').html(newGames)
+}
+
 
 const initGameList = games => {
     let start = parseInt(sessionStorage.start); 
-    renderGameList(start, games); 
+    renderGameList2(start, games); 
 }
 
 const nextPage = input => {

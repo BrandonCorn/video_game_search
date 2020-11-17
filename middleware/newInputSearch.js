@@ -1,8 +1,7 @@
 const { searchGameByInput } = require('../controllers/search'); 
 
 module.exports = async (req, res, next) => {
-    if (!req.session[req.params.input]){
-        console.log('had to search for game'); 
+    if (!req.session[req.params.input] || typeof req.session[req.params.input] !== String){
         const searchGames = await searchGameByInput(req.token, req.params.input); 
         if (!searchGames[0]) return res.render('search-games', {
             newSearch: 0,
@@ -14,7 +13,6 @@ module.exports = async (req, res, next) => {
         req.session[req.params.input] = searchGames; 
         next(); 
     }
-    console.log('game input already exists and is not a letter'); 
     res.locals.newSearch = 0; 
     next(); 
 }
