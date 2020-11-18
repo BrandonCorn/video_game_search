@@ -11,18 +11,15 @@ $(window).on('load', e => {
             initGameList(newGames);        
         }
         else{ 
-            // setCurrentGames(games); 
-            // initGameList(games)
-            if(!validateGamesSent()) {
+            if(!validateGames(games)) {
                 searchByInput(input); 
-                console.log('we searched'); 
             }
-            console.log('no search'); 
-            initGameList(getCurrentGames()); 
+            else{
+                initGameList(getCurrentGames()); 
+            }
         }
     } 
 })
-//create post request for games if there was an error loading the games
 
 const isNewSearch = () => {
     let newSearch = !!parseInt($('#new-search').text())
@@ -36,7 +33,6 @@ const newLetterSearch = (letter) => {
     resetStartGames(); 
     let games = getGames(letter); 
     if (typeof games === 'string' || !games){
-        console.log('got here');
         const search = {
             letter
         } 
@@ -46,9 +42,7 @@ const newLetterSearch = (letter) => {
             contentType: 'application/json', 
             data: JSON.stringify(search), 
             success: (data) => { 
-                // sessionStorage.setItem(letter, JSON.stringify(data));
-                setGames(letter, data); 
-                // sessionStorage.setItem('current', JSON.stringify(data));  
+                setGames(letter, data);  
                 setCurrentGames(data); 
                 initGameList(data)
             },
@@ -58,7 +52,6 @@ const newLetterSearch = (letter) => {
         })
     }  
     else {
-        // sessionStorage.setItem('current', JSON.stringify(games));
         setCurrentGames(games); 
         initGameList(games);
     } 
@@ -70,10 +63,10 @@ const validateGamesSent = (games) => {
     }
     return true; 
 }
+
 const searchByInput = async input => {
-    const search = {
-        input
-    }
+    const search = { input }
+
     $.ajax({
         type: 'POST', 
         url: '/search-by-input', 
@@ -81,14 +74,15 @@ const searchByInput = async input => {
         contentType: 'application/json', 
         success: data => {
             setGames(input, data); 
-            setCurrentGames(data); 
-            // initGameList(data); 
+            setCurrentGames(data);
+            initGameList(data);  
         },
         error: err => {
             console.log(error); 
         }
     })
 }
+
 
 const nextPage = input => {
     let games = getCurrentGames(); 

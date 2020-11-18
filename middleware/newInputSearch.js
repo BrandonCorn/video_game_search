@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
         return next(); 
     }
     if(typeof req.session[req.params.input] === 'string') {
-        console.log('if input string'); 
         const searchGames = await searchGameByInput(req.token, req.params.input); 
         if (!searchGames[0]) return res.render('search-games', {
             newSearch: 0,

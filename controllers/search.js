@@ -47,7 +47,7 @@ const searchGameByInput = (token, input) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields name, cover.url; sort name asc; where name ~ *"${input}"*; limit 100;`
+            data: `fields name, cover.url; where name ~ *"${input}"*; limit 100;`
         })
         .then( apiRes => {
             resolve(apiRes.data);  

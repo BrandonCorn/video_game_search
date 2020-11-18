@@ -90,8 +90,10 @@ body{
 }
 
 .card-img-missing{
-    background: url(media/no_image.svg);
-    object-fit: cover; 
+    background: url(media/no-image-icon.png);
+    object-fit: contain;
+    height: 10rem; 
+    width: 12rem;  
 }
 
 .left-arrow, .right-arrow{ 
@@ -193,7 +195,7 @@ body{
     .all-games-container{
         height: 75%; 
     }
-    .card-img-top{
+    .card-img-top, .card-img-missing{
         height: auto; 
         width: auto; 
         object-fit: contain; 
@@ -220,7 +222,7 @@ body{
     .all-games-container{
         height: 90%; 
     }
-    .card-img-top{
+    .card-img-top, .card-img-missing{
         height: 10rem; 
         width: 14rem; 
         object-fit: contain; 
