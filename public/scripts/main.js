@@ -31,53 +31,88 @@ const setAllGames = games => {
     })
 }
 
-const renderGameList = (start, games) => {  
-    var newGames =``; 
-    for(let i = start; i < start + 10 && i != games.length -1; i++){
-        newGames += `<button type = 'submit' onclick = 'getGameData(this.value)' value = "${games[i].id}:${games[i].name}" class="search-games list-group-item list-group-item-action flex-column align-items-start">
-        <div class="float-left">
-            <h5 class="mb-1"> ${games[i].name}</h5>
-        </div>
-        ${games[i].cover ? `<img class = 'float-right' src = '${games[i].cover.url}' alt = 'game image' />` :  ``}
-        </button> `
-    }
-    $('.alpha-games').html(newGames);
-}
-
-const renderGameList2 = (start, games) => { 
+const renderGameList = (start, games, slide) => { 
     var newGames = ``; 
     for(let i = start; i < start + 5 && i != games.length -1; i++){
-        newGames += `<div class="card bg-transparent">
+        newGames += `
+        <div class="card my-5 my-md-0 mx-0 bg-transparent ${slide ? slide : ''}">
             ${games[i].cover ? `<img class="card-img-top" src="${games[i].cover.url}" alt="Game Cover">` : `<img class = 'card-img-top card-img-missing'>`}
             <div class="card-body">
                 <p class="card-text text-light text-center"> ${games[i].name}</p>
+                <a href = '/game/${games[i].id}/${games[i].name}' class = 'stretched-link'> </a> 
             </div>
         </div>`
     }
     $('.alpha-games').html(newGames)
+    setTimeout(removeSlideClasses, 900) 
 }
 
 
 const initGameList = games => {
     let start = parseInt(sessionStorage.start); 
-    renderGameList2(start, games); 
+    renderGameList(start, games, 'slide-in-right'); 
 }
 
-const nextPage = input => {
-    let games = JSON.parse(sessionStorage.getItem(input));
-    if (parseInt(sessionStorage.start) + 10 >= games.length) return;   
-    let start = parseInt(sessionStorage.start) + 10; 
-    sessionStorage.start = start;   
-    renderGameList(start, games); 
+const setCurrentGames = games => {
+    sessionStorage.setItem('current', JSON.stringify(games))
 }
 
-const prevPage = input => {
-    let games = JSON.parse(sessionStorage.getItem(input));
-    if (parseInt(sessionStorage.start) == 0) return;
-    let start = parseInt(sessionStorage.start) - 10; 
-    sessionStorage.start = start;  
-    renderGameList(start, games); 
+const getCurrentGames = () => {
+    if (typeof sessionStorage.getItem('current') === String || !sessionStorage.getItem('current')) return false; 
+    return JSON.parse(sessionStorage.getItem('current'))
 }
+
+const setGames = (key, value) => {
+    sessionStorage.setItem(key, JSON.stringify(value))
+}
+
+const getGames = key => {
+    return JSON.parse(sessionStorage.getItem(key))
+}
+
+const resetStartGames = () => {
+    sessionStorage.setItem('start', 0); 
+}
+
+// const nextPage = input => {
+//     let games = getCurrentGames(); 
+//     if (parseInt(sessionStorage.start) + 5 >= games.length) return;
+//     slideOut('slide-out-left')   
+//     let start = parseInt(sessionStorage.start) + 5; 
+//     sessionStorage.start = start;   
+//     setTimeout(() => {
+//         renderGameList(start, games, 'slide-in-right');
+//     }, 300) 
+// }
+
+// const prevPage = input => {
+//     let games = getCurrentGames(); 
+//     if (parseInt(sessionStorage.start) == 0) return;
+//     slideOut('slide-out-right')
+//     let start = parseInt(sessionStorage.start) - 5; 
+//     sessionStorage.start = start;  
+//     setTimeout(() => {
+//         renderGameList(start, games, 'slide-in-left')
+//     }, 300); 
+// }
+
+
+// const removeSlideClasses = () => {
+//     let elements = [...document.querySelectorAll('.card')]
+//     elements.map(card => {
+//         card.classList.remove('slide-in-right')
+//         card.classList.remove('slide-out-right')
+//         card.classList.remove('slide-in-left')
+//         card.classList.remove('slide-out-left')
+//     })
+// }
+
+// const slideOut = (slide) => {
+//     let elements = [...document.querySelectorAll('.card')]
+//     elements.map(card => {
+//         card.classList.add(slide)
+//     })
+// }
 
 const getGameData = game => {
     let temp = game.split(':'); 
@@ -87,4 +122,5 @@ const getGameData = game => {
     } 
     window.location.href = `/game/${data.id}/${data.name}`
 }
+
 

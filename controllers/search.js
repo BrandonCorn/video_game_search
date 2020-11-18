@@ -23,12 +23,12 @@ const searchGameByLetter = async (token, letter) => {
             return resolve(apiRes.data);  
         })
         .catch( err => { 
-            console.log(typeof err)
+            console.log(err)
             return reject(err); 
         })
     })
     .catch( err => {
-        return err; 
+        return 'Error getting games'; 
     })
 }
 
@@ -84,12 +84,12 @@ const searchGameById = (token, id) => {
         })
         .catch( err => {
             console.log(err);  
-            reject(err); 
+            reject('Error getting data'); 
         })
     })
     .catch( err => {
         console.log(err); 
-        return err; 
+        return 'Error getting data'; 
     })
 }
 

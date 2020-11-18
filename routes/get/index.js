@@ -8,7 +8,7 @@ router.get('/', token, initGamesByLetter, require('./home'));
 router.get('/discover', token, initGamesByLetter, require('./discover')); 
 router.get('/all-games', token, initGamesByLetter, require('./all-games')); 
 router.get('/contact-us', token, initGamesByLetter, require('./contact-us')); 
-router.get('/search-games/:input', token, initGamesByLetter, newInputIsLetter, newInputSearch, require('./search-games')); 
+router.get('/search-games/:input', token, newInputIsLetter, newInputSearch, require('./search-games')); 
 router.get('/game/:id/:name', token, initGamesByLetter, require('./game-data')); 
 
 module.exports = router; 
