@@ -24,6 +24,11 @@ body{
     color:white; 
 }
 
+footer{
+    position: sticky; 
+    margin-top: 5rem; 
+}
+
 
 /* ***************** ALL GAMES PAGE *****************  */
 .btn-link{ 
@@ -117,6 +122,12 @@ body{
     margin-left: 2rem; 
 }
 
+/* ***************** ANIMATIONS *****************  */
+.game-data-image{
+    height: auto; 
+    width: auto; 
+}
+
 
 /* ***************** ANIMATIONS *****************  */
 .slide-in-right{
@@ -200,6 +211,10 @@ body{
         width: auto; 
         object-fit: contain; 
     }
+    .game-data-image{
+        height: 20rem; 
+        width: 20rem; 
+    }
 }
 
 
@@ -212,6 +227,10 @@ body{
     }
     .all-games-centered-content{
         top: 50%; 
+    }
+    .game-data-image{
+        height: 30rem; 
+        width: 30rem; 
     }
  }
 
@@ -227,10 +246,17 @@ body{
         width: 14rem; 
         object-fit: contain; 
     }
+    .game-data-image{
+        height: 30rem; 
+        width: 30rem; 
+    }
  }
 
 @media (min-width: 1200px) { 
-
+    .game-data-image{
+        height: 40rem; 
+        width: 40rem;  
+    }
  }
 
 

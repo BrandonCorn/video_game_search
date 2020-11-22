@@ -3,10 +3,15 @@ const app = express();
 const bodyParser = require('body-parser'); 
 const config = require('./config/keys'); 
 const session = require('express-session'); 
+const client = require('./controllers/redis')
 
 app.set('view engine', 'ejs'); 
 app.use(express.static(__dirname + '/public')); 
 app.use(express.static(__dirname + '/public/scripts')); 
+app.use((req,res,next) => {
+    req.client = require('./controllers/redis')
+    next()
+}) 
 
 app.use(session({secret: config.SESSION_SECRET, saveUninitialized: true, resave: true }))
 
