@@ -262,3 +262,23 @@ body{
     font-weight: 400;
     color: rgb(255, 255, 255);
 }
+
+/* ***************** DISCOVER *****************  */
+#best-by-type img {
+    max-width: 100%;
+}
+
+.section-content {
+    padding: 5rem 0;
+}
+
+#favorite {
+    background: url('/media/7.png') center center no-repeat;
+    background-size: cover;
+}
+
+.favorite-text {
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 1.875rem;
+}
