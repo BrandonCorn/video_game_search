@@ -263,9 +263,9 @@ footer{
 
 /* ***************** HOME PAGE *****************  */
 .landing-main-jumbotron {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  margin-bottom: 0;
+  padding-top: 14rem;
+  padding-bottom: 0rem;
+  margin-bottom: 10;
   background-color: #fff;
   background-image: url('media/games.jpg');
   background-repeat: no-repeat;
@@ -279,12 +279,41 @@ footer{
 
 .landing-main-container {
   max-width: 40rem;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.11);
   padding: 2rem;
   color: white;
 }
 
 .landing-main-p {
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+
+/* ***************** DISCOVER *****************  */
+.carousel-item .img-fluid {
+  width:100%;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+#best-by-type img {
+    max-width: 100%;
+}
+
+.section-content {
+    padding: 5rem 0;
+}
+
+#favorite {
+    background: url('/media/7.png') center center no-repeat;
+    background-size: cover;
+}
+
+.favorite-text {
+    background: rgba(0,0,0,0.8);
     color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    padding: 1.875rem;
 }
