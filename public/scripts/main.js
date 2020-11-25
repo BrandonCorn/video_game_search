@@ -4,7 +4,7 @@ $(window).on('load', async e => {
     if (typeof(Storage) !== 'undefined'){ 
         if(!validateGamesByLetterSet()){
             let allGames = JSON.parse($('#all-games').text()); 
-            await setAllGames(allGames); 
+            await setAllGames(allGames);
             $('#games').html('')
         }
     }    
@@ -74,45 +74,6 @@ const resetStartGames = () => {
     sessionStorage.setItem('start', 0); 
 }
 
-// const nextPage = input => {
-//     let games = getCurrentGames(); 
-//     if (parseInt(sessionStorage.start) + 5 >= games.length) return;
-//     slideOut('slide-out-left')   
-//     let start = parseInt(sessionStorage.start) + 5; 
-//     sessionStorage.start = start;   
-//     setTimeout(() => {
-//         renderGameList(start, games, 'slide-in-right');
-//     }, 300) 
-// }
-
-// const prevPage = input => {
-//     let games = getCurrentGames(); 
-//     if (parseInt(sessionStorage.start) == 0) return;
-//     slideOut('slide-out-right')
-//     let start = parseInt(sessionStorage.start) - 5; 
-//     sessionStorage.start = start;  
-//     setTimeout(() => {
-//         renderGameList(start, games, 'slide-in-left')
-//     }, 300); 
-// }
-
-
-// const removeSlideClasses = () => {
-//     let elements = [...document.querySelectorAll('.card')]
-//     elements.map(card => {
-//         card.classList.remove('slide-in-right')
-//         card.classList.remove('slide-out-right')
-//         card.classList.remove('slide-in-left')
-//         card.classList.remove('slide-out-left')
-//     })
-// }
-
-// const slideOut = (slide) => {
-//     let elements = [...document.querySelectorAll('.card')]
-//     elements.map(card => {
-//         card.classList.add(slide)
-//     })
-// }
 
 const getGameData = game => {
     let temp = game.split(':'); 

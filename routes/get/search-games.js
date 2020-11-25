@@ -1,11 +1,9 @@
 const { searchGameByInput } = require('../../controllers/search'); 
 
 module.exports = async (req, res) => { 
-
+    const searchGames = await req.client.getObject(req.params.input)
     return res.render('search-games', {
-        searchGames: res.locals.game, 
+        searchGames, 
         input: req.params.input, 
-        newSearch: res.locals.newSearch, 
-        allGames: {}
     }); 
 }

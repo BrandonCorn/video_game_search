@@ -3,29 +3,23 @@ $(window).on('load', e => {
     sessionStorage.start = 0;
     if (typeof(Storage) !== 'undefined'){ 
         let input = $('#search-input').text()
-        let games = getGames(input); 
-        if(isNewSearch){ 
+        let games = getGames(input)
+        if (!validateGames(games)){
             let newGames = JSON.parse($('#games').text())
-            setGames(input, newGames); 
-            setCurrentGames(newGames); 
-            initGameList(newGames);        
-        }
-        else{ 
-            if(!validateGames(games)) {
-                searchByInput(input); 
-            }
+            if(!validateGames(newGames)) searchByInput(input)
             else{
-                initGameList(getCurrentGames()); 
+                setGames(input, newGames)
+                setCurrentGames(newGames)
+                initGameList(newGames)
             }
+        }
+        else{
+            setCurrentGames(games)
+            initGameList(games)
         }
     } 
 })
 
-const isNewSearch = () => {
-    let newSearch = !!parseInt($('#new-search').text())
-    if (!!newSearch) return true
-    else return false
-}
 
 
 const newLetterSearch = (letter) => {
@@ -57,16 +51,15 @@ const newLetterSearch = (letter) => {
     } 
 }
 
-const validateGamesSent = (games) => {
-    if (typeof games === 'string') {
+const validateGames = (games) => {
+    if (typeof games === 'string' || !games) {
         return false;    
     }
     return true; 
 }
 
-const searchByInput = async input => {
+const searchByInput = async input=> {
     const search = { input }
-
     $.ajax({
         type: 'POST', 
         url: '/search-by-input', 
@@ -82,6 +75,21 @@ const searchByInput = async input => {
         }
     })
 }
+
+$('#search-form').on('submit', e => {
+    e.preventDefault()
+    let input = document.getElementById('search').value
+    $('#search-input').text(input)
+    let games = getGames(input)
+    if (!validateGames(games)) {
+        searchByInput(input)
+    }
+    else{
+        setCurrentGames(games)
+        initGameList(games)
+    }
+    $('#search-form').trigger('reset')
+})
 
 
 const nextPage = input => {

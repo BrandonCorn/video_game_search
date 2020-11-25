@@ -35,7 +35,7 @@ const { promisify } = require("util");
 const client = () => {
     const client = redis.createClient(config.REDIS_URL)
     client.on('error', () => {
-        console.log('error connecting')
+        console.log('error connecting to redis')
     })
     client.on('connect', () => {
         console.log('connected to redis')
@@ -49,7 +49,7 @@ const client = () => {
         getObject: async (key) => {
             return new Promise(async (resolve, reject) => {
                 const values = await get(key)
-                if(!values) return false
+                if(!values) return resolve(false)
                 resolve(JSON.parse(values))
             })
             .catch(err => {
