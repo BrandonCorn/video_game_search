@@ -264,6 +264,15 @@ body{
 }
 
 /* ***************** DISCOVER *****************  */
+.carousel-item .img-fluid {
+  width:100%;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
 #best-by-type img {
     max-width: 100%;
 }
