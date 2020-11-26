@@ -12,4 +12,5 @@ ports:
 #     command: echo 'start script'
 
 tasks:
-  - init: npm instal
+  - init: npm install
+    command: redis-server
