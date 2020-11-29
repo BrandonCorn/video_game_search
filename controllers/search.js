@@ -115,10 +115,37 @@ const searchAllLetters = token => {
     })
 }
 
+const searchUpcomingReleasesPlaystation = (token) => {
+    return new Promise( async (resolve, reject) => {
+        const bearer = 'Bearer ' + token; 
+        axios({
+            url: 'https://api.igdb.com/v4/games/', 
+            method: 'POST', 
+            headers: {
+                'Accept': 'application/json',  
+                'Client-ID': config.IGDB_CLIENT_ID,
+                'Authorization': bearer, 
+                'Content-Type': 'text/plain',
+            },
+            data: `fields *, cover.url; where game.platforms = 48 & date < 1538129354; sort date desc; limit 1;`
+        })
+        .then( apiRes => {
+            resolve(apiRes.data);  
+        })
+        .catch( err => {
+            console.log(err); 
+            reject('Error getting data');
+        })
+    })
+    .catch( err => { 
+        return 'Error getting game data';
+    })
+}
 
 module.exports = {
     searchGameByLetter, 
     searchGameByInput, 
     searchGameById, 
     searchAllLetters,
+    searchUpcomingReleasesPlaystation,
 }

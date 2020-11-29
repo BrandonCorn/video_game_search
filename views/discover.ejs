@@ -83,7 +83,11 @@
         </a>
     </div> -->
 
-    <section id="carousel">
+
+
+
+
+    <!-- <section id="carousel">
         <div id="carousel-home" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
@@ -92,7 +96,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="/media/1.png" alt="Game 1">
+                    <img class="d-block img-fluid" src="/media/2.png" alt="Game 2">
                     <div class="carousel-caption">
                         <h3>Game 1</h3>
                         <p>Game 1 Text</p>
@@ -191,12 +195,14 @@
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- idk what this is 
-    <% if (searched) { %> 
-        <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
-    <% } %>  -->
+    </section> -->
+
+
+    <div class = 'col bg-black'> 
+        <% if(game.cover){ %> 
+            <img class = 'game-data-image mx-auto d-block' src = '<%=game.cover.url.replace("t_thumb","t_cover_big")%>' alt = 'game cover' /> 
+        <% } %> 
+    </div> 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -205,6 +211,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Added -->  
     <script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'> </script> 
+    <script src = '/main.js'> </script>
     <script src = '/discover.js'> </script> 
 </body>
 </html>
