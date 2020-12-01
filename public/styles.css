@@ -259,6 +259,9 @@ footer{
     .card-img-missing{
         font-size: 8rem; 
     }
+    .footer{
+        position: relative; 
+    }
  }
 
 @media (min-width: 1200px) { 
