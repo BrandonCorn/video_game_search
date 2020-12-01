@@ -1,5 +1,3 @@
 node_modules/
 dev.js
-.gitpod.Dockerfile
-.gitpod.yml
 dump.rdb
