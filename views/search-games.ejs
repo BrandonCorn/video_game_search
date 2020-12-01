@@ -26,7 +26,7 @@
     </div> 
         <div class='my-5 min-vw-100 search-games-container mx-0'>
             <div class='all-games-centered-content'>
-                <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3 bg-transparent'>
+                <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3'>
                     <% for (var i = 0; i < 26; i++){ %>
                     <li class='list-group-item border-0 px-2 px-sm-2 bg-transparent text-center'> <button type='submit'
                             value='<%= (i+10).toString(36)%>' onclick='newLetterSearch(this.value)' class='btn btn-link p-0'>
@@ -46,7 +46,7 @@
         </div>
         <div class='jumbotron h-75 d-flex justify-content-center bg-transparent my-2'>
             <button class = 'left-arrow' type = 'submit' onclick = 'prevPage()' value = '<%=input%>'></button>
-            <div class='col card-deck alpha-games'>
+            <div class='col card-deck alpha-games mx-3'>
  
             </div>
             <button class = 'right-arrow' type = 'submit' onclick = 'nextPage()' value = '<%=input%>'></button>
