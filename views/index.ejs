@@ -12,9 +12,9 @@
     <header> 
         <%- include('./partials/header'); %> 
     </header>
-    <% if (searched) { %> 
-        <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
-    <% } %> 
+
+    <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span> 
+
     <section class="landing-main-jumbotron jumbotron text-xs-center">
         <div class="landing-main-container container">
             <h1 class=" landing-heading jumbotron-heading">Video Game Search</h1>

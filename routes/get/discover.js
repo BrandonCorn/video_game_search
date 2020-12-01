@@ -1,22 +1,15 @@
-const { searchUpcomingReleasesPlaystation } = require('../../controllers/discoverSearch'); 
-const { searchBestGames } = require('../../controllers/discoverSearch'); 
+// const { searchUpcomingReleasesPlaystation, searchBestGames } = require('../../controllers/discoverSearch'); 
+const { searchAllDiscover } = require('../../controllers/discoverSearch')
 
 module.exports = async (req, res) => { 
-    var games = await searchUpcomingReleasesPlaystation(req.token); 
-    var bestGames = await searchBestGames(req.token); 
-    if (typeof games === 'string' && typeof bestGames === 'string'){
-        var games = await searchUpcomingReleasesPlaystation(req.token)
-        var bestGames = await searchBestGames(req.token)
-    }
-    const filteredGames = games.filter(gameData => gameData.game.cover.url && gameData.game.name && gameData.game.summary)
-    const filteredBestGames = bestGames.filter(bestGameData => bestGameData.game.cover.url && bestGameData.game.name && bestGameData.game.summary && bestGameData.game.rating)
-
-    console.log(filteredGames.length)
-    console.log(filteredBestGames.length)
-    console.log(filteredGames)    
-    console.log(filteredBestGames)
+    const games = await searchAllDiscover(req.token)
+    const upcomingGames = games.slice(0,3).map(games => games.filter(gameData => gameData.game.cover && gameData.game.name && gameData.game.summary)[0])
+    const popularGames = games.slice(3,6)
+    const favoriteGames = games.slice(6,8)
+    
     return res.render('discover', {
-        games: filteredGames,
-        bestGames: filteredBestGames
+        games: upcomingGames,
+        bestGames: popularGames, 
+        favoriteGames
     })
 }

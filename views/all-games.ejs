@@ -13,17 +13,10 @@
     <header> 
         <%- include('./partials/header'); %> 
     </header>
-    <% if (searched) { %> 
-        <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(allGames) %> </span> 
-    <% } %> 
 
-    <!-- <div class = 'container mt-5'> 
-        <div class = 'row'> 
-            <div class = 'col d-flex justify-content-center'> 
-                <h3 class = 'display-4 text-white'> All Games </h3>
-            </div> 
-        </div> 
-    </div>  -->
+        <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span>  
+
+
     <div class='my-5 min-vw-100 all-games-container mx-0'>
         <div class='all-games-centered-content'>
             <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3 bg-transparent'>

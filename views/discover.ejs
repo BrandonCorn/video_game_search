@@ -15,14 +15,14 @@
         <%- include('./partials/header'); %> 
     </header>
 
+    <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span>
+
     <section id="carousel">
         <div id="carousel-home" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-home" data-slide-to="1"></li>
                 <li data-target="#carousel-home" data-slide-to="2"></li>
-                <li data-target="#carousel-home" data-slide-to="3"></li>
-                <li data-target="#carousel-home" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
@@ -64,32 +64,6 @@
                         <% } %> 
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <% if(games){ %> 
-                        <img class = 'game-data-image mx-auto d-block' src = '<%=games[3].game.cover.url.replace("t_thumb","t_cover_big")%>' alt = 'game cover' /> 
-                    <% } %> 
-                    <div class="carousel-caption">
-                        <% if(games){ %> 
-                            <h3> <%=games[3].game.name %> </h3>
-                        <% } %> 
-                        <% if(games){ %> 
-                            <p> <%=games[3].game.summary %> </p>
-                        <% } %> 
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <% if(games){ %> 
-                        <img class = 'game-data-image mx-auto d-block' src = '<%=games[4].game.cover.url.replace("t_thumb","t_cover_big")%>' alt = 'game cover' /> 
-                    <% } %> 
-                    <div class="carousel-caption">
-                        <% if(games){ %> 
-                            <h3> <%=games[4].game.name %> </h3>
-                        <% } %> 
-                        <% if(games){ %> 
-                            <p> <%=games[4].game.summary %> </p>
-                        <% } %> 
-                    </div>
-                </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-home" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -114,7 +88,7 @@
                                  <div class="card-block">
                                      <h4 class="card-title">Genre</h4>
                                      <% if(bestGames){ %> 
-                                        <h6 class="card-subtitle"><%=bestGames[0].game.name %> </h6>
+                                        <h6 class="card-subtitle"><%=bestGames[0].name %> </h6>
                                      <% } %> 
                                  </div>
                                  <img src="/media/4.png" alt="Game 4">
