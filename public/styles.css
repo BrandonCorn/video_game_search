@@ -235,6 +235,9 @@ footer{
         width: 7rem; 
         object-fit: fill; 
     }
+    .card-img-missing{
+        font-size: 5rem;  
+    }
  }
 
 @media (min-width: 992px) { 
@@ -252,6 +255,9 @@ footer{
     .game-data-image{
         height: 30rem; 
         width: 30rem; 
+    }
+    .card-img-missing{
+        font-size: 8rem; 
     }
  }
 
