@@ -1,4 +1,3 @@
-const { RedisClient } = require('redis')
 const { searchAllLetters, searchGameByLetter } = require('../controllers/search') 
 
 module.exports = async (req, res, next) => {

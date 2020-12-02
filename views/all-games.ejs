@@ -21,7 +21,7 @@
         <div class='all-games-centered-content'>
             <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3 bg-transparent'>
                 <% for (var i = 0; i < 26; i++){ %>
-                <li class='list-group-item border-0 px-2 px-sm-2 bg-transparent text-center'> <button type='submit'
+                <li class='list-group-item alphabet shadow border-0 px-2 px-sm-2 text-center'> <button type='submit'
                         value='<%= (i+10).toString(36)%>' onclick='searchByLetter(this.value)' class='btn btn-link p-0'>
                         <%= (i+10).toString(36) %> </button> </li>
                 <% } %>

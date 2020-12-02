@@ -26,9 +26,9 @@
     </div> 
         <div class='my-5 min-vw-100 search-games-container mx-0'>
             <div class='all-games-centered-content'>
-                <ul class='list-group list-group-horizontal flex-wrap mx-2 my-3'>
+                <ul class='list-group list-group-horizontal d-md-flex d-none flex-wrap mx-2 my-3'>
                     <% for (var i = 0; i < 26; i++){ %>
-                    <li class='list-group-item border-0 px-2 px-sm-2 bg-transparent text-center'> <button type='submit'
+                    <li class='list-group-item alphabet shadow border-0 px-2 px-sm-2 text-center'> <button type='submit'
                             value='<%= (i+10).toString(36)%>' onclick='newLetterSearch(this.value)' class='btn btn-link p-0'>
                             <%= (i+10).toString(36) %> </button> </li>
                     <% } %>
@@ -42,20 +42,21 @@
                     </form>
                 </div>
             </div>
-        
         </div>
+        <div class = 'container d-md-none d-flex justify-content-center'> 
+            <button class = 'left-arrow d-md-none d-inline mx-2' type = 'submit' onclick = 'prevPage()' value = '<%=input%>'> </button>
+            <button class = 'right-arrow d-md-none d-inline mx-2' type = 'submit' onclick = 'nextPage()' value = '<%=input%>'> </button>
+        </div> 
         <div class='jumbotron h-75 d-flex justify-content-center bg-transparent my-2'>
-            <button class = 'left-arrow' type = 'submit' onclick = 'prevPage()' value = '<%=input%>'></button>
+            <button class = 'left-arrow d-md-flex d-none' type = 'submit' onclick = 'prevPage()' value = '<%=input%>'></button>
             <div class='col card-deck alpha-games mx-3'>
  
             </div>
-            <button class = 'right-arrow' type = 'submit' onclick = 'nextPage()' value = '<%=input%>'></button>
+            <button class = 'right-arrow d-md-flex d-none' type = 'submit' onclick = 'nextPage()' value = '<%=input%>'></button>
         </div>
-     
-    <footer> 
+    <footer class = 'd-lg-inline d-none'> 
         <%- include('./partials/footer'); %> 
     </footer>
-    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS --> 

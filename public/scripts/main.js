@@ -6,6 +6,7 @@ $(window).on('load', async e => {
             let allGames = JSON.parse($('#all-games').text()); 
             await setAllGames(allGames);
             $('#games').html('')
+            $('#all-games').html('')
         }
     }    
 })

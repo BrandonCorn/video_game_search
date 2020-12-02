@@ -1,5 +1,4 @@
 body{
-    /* background-color: #343a40; */
     background-color: black; 
     overflow-x: hidden; 
 }
@@ -53,7 +52,8 @@ footer{
     width: 100vw; 
     position: relative;
     height: 45%; 
-    background-image: url(media/game_controller.jpg); 
+    /* background-image: url(media/game_controller.jpg);  */
+    background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.2)), url(media/game_controller.jpg);
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center center;
@@ -65,6 +65,10 @@ footer{
     top: 50%; 
 	left: 50%;
     transform: translate(-50%, -50%);
+}
+ 
+.alphabet{
+    background-color: rgba(0,0,0,.6); 
 }
 
 /* ***************** SEARCH GAMES PAGE *****************  */
