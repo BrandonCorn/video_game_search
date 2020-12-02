@@ -16,7 +16,7 @@ const searchUpcomingReleases = (token, platform) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields *, game.name, game.cover.url, game.summary, date; where game.platforms = {${platform}} & date > 1606845655119; sort date desc; limit 5;`
+            data: `fields *, game.genres.name, game.name, game.cover.url, game.summary, date; where game.platforms = {${platform}} & date > 1606845655119; sort date desc; limit 10;`
         })
         .then( apiRes => {
             resolve(apiRes.data);
@@ -32,14 +32,13 @@ const searchUpcomingReleases = (token, platform) => {
 }
 
 
-//in the results, the first three positions contain upcoming releases for pc, ps4, and switch respectively, the next three positions are hardcoded popular
+//in the results, the first four positions contain upcoming releases for pc, ps5, ps4, and switch respectively, the next three positions are hardcoded popular
 //games, and the last two positions are Brandon and Mike's favorite games
 const searchAllDiscover = token => {
     return new Promise( async (resolve, reject) => {
-        const discoverSearchResults = await Promise.all([searchUpcomingReleases(token, 6), searchUpcomingReleases(token, 48),
-            searchUpcomingReleases(token, 130),searchGameById(token, 1029),
-            searchGameById(token, 14548),searchGameById(token, 136976), 
-            searchGameById(token, 1221), searchGameById(token, 43264)])
+        const discoverSearchResults = await Promise.all([searchUpcomingReleases(token, 6), searchUpcomingReleases(token, 167), searchUpcomingReleases(token, 48), searchUpcomingReleases(token, 130),
+            searchGameById(token, 131800), searchGameById(token, 141193),searchGameById(token, 1020), 
+            searchGameById(token, 379), searchGameById(token, 1221)])
         
         resolve(discoverSearchResults); 
     })

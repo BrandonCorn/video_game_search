@@ -279,7 +279,7 @@ footer{
 
 /* ***************** HOME PAGE *****************  */
 .landing-main-jumbotron {
-  padding-top: 14rem;
+  padding-top: 20rem;
   padding-bottom: 0rem;
   margin-bottom: 10;
   background-color: #fff;
@@ -315,17 +315,24 @@ footer{
   width:100%;
 }
 
+
 #best-by-type img {
-    max-width: 100%;
+    max-width: 70%;
 }
+
+.card {
+    background-color: rgb(255, 255, 255);
+}
+
 
 .section-content {
     padding: 5rem 0;
 }
 
 #favorite {
-    background: url('/media/7.png') center center no-repeat;
     background-size: cover;
+    padding-left: 400; 
+    padding-right: 600;
 }
 
 .favorite-text {
