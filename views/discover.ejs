@@ -17,12 +17,16 @@
 
     <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span>
 
+    <div class="container">
+        <h2 style="color:blue;">Upcoming releases</h2>
+    </div>
     <section id="carousel">
         <div id="carousel-home" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-home" data-slide-to="1"></li>
                 <li data-target="#carousel-home" data-slide-to="2"></li>
+                <li data-target="#carousel-home" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
@@ -31,7 +35,7 @@
                     <% } %> 
                     <div class="carousel-caption">
                         <% if(games){ %> 
-                            <h3> <%=games[0].game.name %> </h3>
+                            <h3><strong>|PC|&ThickSpace;&ThickSpace;&ThickSpace;</strong> <%=games[0].game.name %> </h3>
                         <% } %> 
                         <% if(games){ %> 
                             <p> <%=games[0].game.summary %> </p>
@@ -44,7 +48,7 @@
                     <% } %> 
                     <div class="carousel-caption">
                         <% if(games){ %> 
-                            <h3> <%=games[1].game.name %> </h3>
+                            <h3><strong>|Playstation 5|&ThickSpace;&ThickSpace;&ThickSpace;</strong> <%=games[1].game.name %> </h3>
                         <% } %> 
                         <% if(games){ %> 
                             <p> <%=games[1].game.summary %> </p>
@@ -57,10 +61,23 @@
                     <% } %> 
                     <div class="carousel-caption">
                         <% if(games){ %> 
-                            <h3> <%=games[2].game.name %> </h3>
+                            <h3><strong>|Playstation 4|&ThickSpace;&ThickSpace;&ThickSpace;</strong> <%=games[2].game.name %> </h3>
                         <% } %> 
                         <% if(games){ %> 
                             <p> <%=games[2].game.summary %> </p>
+                        <% } %> 
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <% if(games){ %> 
+                        <img class = 'game-data-image mx-auto d-block' src = '<%=games[3].game.cover.url.replace("t_thumb","t_cover_big")%>' alt = 'game cover' /> 
+                    <% } %> 
+                    <div class="carousel-caption">
+                        <% if(games){ %> 
+                            <h3><strong>|Nintendo Switch|&ThickSpace;&ThickSpace;&ThickSpace;</strong> <%=games[3].game.name %> </h3>
+                        <% } %> 
+                        <% if(games){ %> 
+                            <p> <%=games[3].game.summary %> </p>
                         <% } %> 
                     </div>
                 </div>
@@ -79,47 +96,48 @@
     <section id="best-by-type">
          <div class="section-content">
              <div class="container">
-                 <h2 style="color:blue;">Top three games:</h2>
-                 <p class="lead" style="color:white;">These are the three best rated games</p>
+                 <h2 style="color:blue;">Popular games:</h2>
+                 <p class="lead" style="color:white;">These are the three most popular games of the moment</p>
                  <div class="row">
-                     <div class="col-sm-12">
+                     <div class="col-sm-13">
                          <div class="card-group">
                              <div class="card">
                                  <div class="card-block">
-                                     <h4 class="card-title">Genre</h4>
+                                     <h4 class="card-title"><%=bestGames[0].genres.map(gen => gen.name + ' ') %> </h4>
                                      <% if(bestGames){ %> 
                                         <h6 class="card-subtitle"><%=bestGames[0].name %> </h6>
                                      <% } %> 
                                  </div>
-                                 <img src="/media/4.png" alt="Game 4">
+                                 <img src='<%=bestGames[0].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
-                                     <p class="card-text">Game Summary</p>
-                                     <p class="card-text">Rating: </p>
+                                     <p class="card-text"><%=bestGames[0].summary %> </p>
                                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
                                  </div>
                              </div>
 
                              <div class="card">
                                  <div class="card-block">
-                                     <h4 class="card-title">Genre</h4>
-                                     <h6 class="card-subtitle">Game Name</h6>
+                                     <h4 class="card-title"><%=bestGames[1].genres.map(gen => gen.name + ' ') %>  </h4>
+                                     <% if(bestGames){ %> 
+                                        <h6 class="card-subtitle"><%=bestGames[1].name %> </h6>
+                                     <% } %> 
                                  </div>
-                                 <img src="/media/5.png" alt="working on a laptop">
+                                 <img src='<%=bestGames[1].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
-                                     <p class="card-text">Game Summary</p>
-                                     <p class="card-text">Rating: </p>
+                                     <p class="card-text"><%=bestGames[1].summary %> </p>
                                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
                                  </div>
                              </div>
                              <div class="card">
                                  <div class="card-block">
-                                     <h4 class="card-title">Genre</h4>
-                                     <h6 class="card-subtitle">Game Name</h6>
+                                     <h4 class="card-title"><%=bestGames[2].genres.map(gen => gen.name + ' ') %> </h4>
+                                     <% if(bestGames){ %> 
+                                        <h6 class="card-subtitle"><%=bestGames[2].name %> </h6>
+                                     <% } %> 
                                  </div>
-                                 <img src="/media/6.png" alt="Game 6">
+                                 <img src='<%=bestGames[2].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
-                                     <p class="card-text">Game Summary</p>
-                                     <p class="card-text">Rating: </p>
+                                     <p class="card-text"><%=bestGames[2].summary %> </p>
                                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
                                  </div>
                              </div>
@@ -131,43 +149,48 @@
     </section>
     
 
-
-    <section id="favorite">
+    <section id="favorite" style="background: url(<%=favoriteGames[0].cover.url.replace('t_thumb','t_cover_big') %>) center center no-repeat;">
         <div class="section-content">
             <div class="container">
                 <div class="col-md-6">
                     <div class="favorite-text">
                         <h3>Miguel's Favorite</h3>
-                        <p class="lead">Game 7</p>
-                        <p>Game 7 Text</p>
+                        <% if(favoriteGames){ %> 
+                            <p class="lead"><u><%=favoriteGames[0].name %></u></p>
+                        <% } %> 
+                        <p><%=favoriteGames[0].summary %></p>
                         
                         <h5>Learn more about the game and saga</h5>
-                        <a href="" class="btn btn-secondary">Trailer</a>
-                        <a href="" class="btn btn-secondary">Reviews</a>
-                        <a href="" class="btn btn-secondary">Guides</a>
+                        <a href="https://www.youtube.com/watch?v=cGJ-vqsG4Js" target="_blank" class="btn btn-secondary">Trailer</a>
+                        <a href="https://www.metacritic.com/game/playstation-2/metal-gear-solid-3-snake-eater" target="_blank" class="btn btn-secondary">Reviews</a>
+                        <a href="https://psnprofiles.com/guide/5449-metal-gear-solid-3-snake-eater-trophy-guide" target="_blank" class="btn btn-secondary">Guide</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="favorite">
-        <div class="section-content">
-            <div class="container">
-                <div class="col-md-6">
-                    <div class="favorite-text">
-                        <h3>Brandon's Favorite</h3>
-                        <p class="lead">Game 7</p>
-                        <p>Game 7 Text</p>
-                        
-                        <h5>Learn more about the game and saga</h5>
-                        <a href="" class="btn btn-secondary">Trailer</a>
-                        <a href="" class="btn btn-secondary">Reviews</a>
-                        <a href="" class="btn btn-secondary">Guides</a>
-                    </div>
+    <section id="favorite" style="background: url(<%=favoriteGames[1].cover.url.replace('t_thumb','t_cover_big') %>) center center no-repeat;">
+        <div class="container">
+            <div class="col-md-6">
+                <div class="favorite-text">
+                    <h3>Brandon's Favorite</h3>
+                    <% if(favoriteGames){ %> 
+                        <p class="lead"><u><%=favoriteGames[1].name %></u></p>
+                    <% } %> 
+                    <p><%=favoriteGames[1].summary %></p>
+                    
+                    <h5>Learn more about the game and saga</h5>
+                    <a href="https://www.youtube.com/watch?v=zCa8w6mrDJg" target="_blank" class="btn btn-secondary">Trailer</a>
+                    <a href="https://www.metacritic.com/game/playstation-2/kingdom-hearts-ii" target="_blank" class="btn btn-secondary">Reviews</a>
+                    <a href="https://psnprofiles.com/guide/2086-kingdom-hearts-ii-trophy-guide" target="_blank" class="btn btn-secondary">Guide</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer> 
+        <%- include('./partials/footer'); %> 
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
