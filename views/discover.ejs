@@ -18,7 +18,7 @@
     <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span>
 
     <div class="container">
-        <h2 style="color:blue;">Upcoming releases</h2>
+        <!-- <h2 style="color:blue;">Upcoming releases</h2> -->
     </div>
     <section id="carousel">
         <div id="carousel-home" class="carousel slide" data-ride="carousel">
@@ -96,7 +96,7 @@
     <section id="best-by-type">
          <div class="section-content">
              <div class="container">
-                 <h2 style="color:blue;">Popular games:</h2>
+                 <!-- <h2 style="color:blue;">Popular games:</h2> -->
                  <p class="lead" style="color:white;">These are the three most popular games of the moment</p>
                  <div class="row">
                      <div class="col-sm-13">
@@ -111,7 +111,7 @@
                                  <img src='<%=bestGames[0].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
                                      <p class="card-text"><%=bestGames[0].summary %> </p>
-                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[0].id%>/<%=bestGames[0].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a>
                                  </div>
                              </div>
 
@@ -125,7 +125,7 @@
                                  <img src='<%=bestGames[1].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
                                      <p class="card-text"><%=bestGames[1].summary %> </p>
-                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[1].id%>/<%=bestGames[1].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a> 
                                  </div>
                              </div>
                              <div class="card">
@@ -138,7 +138,7 @@
                                  <img src='<%=bestGames[2].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
                                  <div class="card-block">
                                      <p class="card-text"><%=bestGames[2].summary %> </p>
-                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button>
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[2].id%>/<%=bestGames[2].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a>
                                  </div>
                              </div>
                          </div>
@@ -149,10 +149,11 @@
     </section>
     
 
-    <section id="favorite" style="background: url(<%=favoriteGames[0].cover.url.replace('t_thumb','t_cover_big') %>) center center no-repeat;">
+    <section id="favorite" >
         <div class="section-content">
             <div class="container">
-                <div class="col-md-6">
+                <div class = 'row'> 
+                <div class="col-md-6 order-2">
                     <div class="favorite-text">
                         <h3>Miguel's Favorite</h3>
                         <% if(favoriteGames){ %> 
@@ -166,12 +167,17 @@
                         <a href="https://psnprofiles.com/guide/5449-metal-gear-solid-3-snake-eater-trophy-guide" target="_blank" class="btn btn-secondary">Guide</a>
                     </div>
                 </div>
+                <div class = 'col order-1'> 
+                    <img class = 'img-fluid discover-favorite-game-img' src = "<%=favoriteGames[0].cover.url.replace('t_thumb','t_cover_big') %>" alt = 'game cover' style = 'width: 90%;'/> 
+                </div>
+            </div> 
             </div>
         </div>
     </section>
-    <section id="favorite" style="background: url(<%=favoriteGames[1].cover.url.replace('t_thumb','t_cover_big') %>) center center no-repeat;">
+    <section id="favorite">
         <div class="container">
-            <div class="col-md-6">
+            <div class = 'row'> 
+            <div class="col order-md-1 order-2">
                 <div class="favorite-text">
                     <h3>Brandon's Favorite</h3>
                     <% if(favoriteGames){ %> 
@@ -185,6 +191,10 @@
                     <a href="https://psnprofiles.com/guide/2086-kingdom-hearts-ii-trophy-guide" target="_blank" class="btn btn-secondary">Guide</a>
                 </div>
             </div>
+            <div class = 'col-md-6 order-md-2 order-1'> 
+                <img class = 'img-fluid discover-favorite-game-img'src = "<%=favoriteGames[1].cover.url.replace('t_thumb','t_cover_big') %>" alt = 'game cover' style = 'width: 90%;'/> 
+            </div>
+        </div> 
         </div>
     </section>
 

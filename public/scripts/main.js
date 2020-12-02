@@ -36,7 +36,7 @@ const renderGameList = (start, games, slide) => {
     var newGames = ``; 
     for(let i = start; i < start + 5 && i != games.length -1; i++){
         newGames += `
-        <div class="card my-5 my-md-0 bg-transparent text-center ${slide ? slide : ''}">
+        <div class="game-card card my-5 my-md-0 bg-transparent text-center ${slide ? slide : ''}">
             ${games[i].cover ? `<img class="card-img-top mx-auto" src="${games[i].cover.url.replace('t_thumb', 't_cover_big')}" alt="Game Cover">` : `<h1 class = 'text-center card-img-missing'> ? </h1> `}
             <div class="card-body">
                 <p class="card-text text-light text-center"> ${games[i].name}</p>
