@@ -6,6 +6,7 @@ module.exports = async (req,res) => {
     let games = await req.client.getObject(req.body.input)
     if (typeof games === 'string' || !games){
         const searchGames = await searchGameByInput(req.token, req.body.input)
+        console.log('search-games', searchGames); 
         req.client.setObject(req.body.input, searchGames)
         return res.status(200).send(searchGames)
     }

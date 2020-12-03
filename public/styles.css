@@ -205,6 +205,11 @@ footer{
     font-size: 1rem;  
 }
 
+.email-link{
+    cursor: pointer; 
+    text-decoration: none; 
+}
+
 /* ***************** MEDIA QUERIES *****************  */
 @media (min-width: 576px) { 
     .text-4{

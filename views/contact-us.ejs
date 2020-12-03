@@ -15,6 +15,34 @@
     </header>
 
     <span id = 'all-games' class = 'd-none' hidden> <%=JSON.stringify(locals.gamesByLetter) %> </span>
+    <div id = 'email-modal' class="modal fade email-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="modal-title"> Let's Work Together!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          <div class="modal-content">
+            <form id = 'email-form' class = 'p-3 p-md-5'>
+                <div class = 'form-group'> 
+                    <label for = 'sender' class = 'col-form-label'> Sender: </label>
+                    <input type = 'email' class = 'form-control' id = 'sender' required> 
+                </div> 
+                <div class = 'form-group'> 
+                    <label for = 'subject' class = 'col-form-label'> Subject: </label>
+                    <input type = 'text' class = 'form-control' id = 'subject' required> 
+                </div> 
+                <div class="form-group">
+                    <label for="text" class="col-form-label">Message:</label>
+                    <textarea rows = '8' class="form-control" id="text"></textarea required>
+                </div>
+                <input id = 'receiver' class = 'd-none'> 
+                <button onsubmit = 'sendEmail()' class = 'btn btn-secondary'> Send </button>
+              </form>
+          </div>
+        </div>
+      </div>
 
     <div class = 'container my-5 border-bottom border-white'> 
         <h1 class = 'display-4 text-center text-white'> 
@@ -33,22 +61,15 @@
                     presents.  </p>
                 <hr> <hr> 
                 <ul class = 'contact-list'> 
-                    <li class = 'contact-list-item text-4 text-secondary'> Email: <i> corn_brandon@columbusstate.edu </i> </li>
-                    <li class = 'contact-list-item text-4'> <a class = 'text-secondary border-bottom' href = 'https://www.linkedin.com/in/brandon-corn-3b3249152/'> LinkedIn/Brandon Corn </a> </li>
-                    <li class = 'contact-list-item text-4'> <a class = 'text-secondary border-bottom' href = 'https://www.github.com/BrandonCorn'> Github/Brandon Corn </a> </li>
+                    <li class = 'contact-list-item text-4 text-light'> LinkedIn: <a class = 'text-secondary border-bottom ' href = 'https://www.linkedin.com/in/brandon-corn-3b3249152/'> LinkedIn/Brandon Corn </a> </li>
+                    <li class = 'contact-list-item text-4 text-light'> Github: <a class = 'text-secondary border-bottom' href = 'https://www.github.com/BrandonCorn'> Github/Brandon Corn </a> </li>
+                    <li class = 'contact-list-item'> <button class = 'btn btn-secondary' data-val = 'corn_brandon@columbusstate.edu' data-toggle = 'modal' data-target = '.email-modal-lg'> Contact </button> </li>
                 </ul>
 
             </div> 
         </div>
     </div> 
      
-    <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 h-75" src="/media/code-img.jpg" alt = 'Code Image'>
-          </div>
-        </div>
-      </div> -->
 
     <div class = 'w-100 bg-white'> 
     <div class = 'container mt-4 pt-4'> 
@@ -62,9 +83,10 @@
                     I enjoy playing video games, trying out weird foods from around the world, and travelling everywhere I get the chance to.  </p>
                 <hr class = 'invisible'> <hr class = 'invisible'> 
                 <ul class = 'contact-list'> 
-                    <li class = 'contact-list-item text-4 text-secondary'> Email: <i> miguelmontieljr@gmail.com </i> </li>
-                    <li class = 'contact-list-item text-4'> <a class = 'text-secondary border-bottom' href = 'https://www.linkedin.com/in/miguel-montiel-8aab58139/'> LinkedIn/Miguel  </a> </li>
-                    <li class = 'contact-list-item text-4'> <a class = 'text-secondary border-bottom' href = 'https://github.com/MikeVita4'> Github/Miguel </a> </li>
+                    <!-- <li class = 'contact-list-item text-4 text-secondary'> Email: <a href = '#'class = 'text-secondary border-bottom' data-val = 'miguelmontieljr@gmail.com' data-toggle = 'modal' data-target = '.email-modal-lg'> miguelmontieljr@gmail.com </a> </li> -->
+                    <li class = 'contact-list-item text-4'> LinkedIn: <a class = 'text-secondary border-bottom' href = 'https://www.linkedin.com/in/miguel-montiel-8aab58139/'> LinkedIn/Miguel  </a> </li>
+                    <li class = 'contact-list-item text-4'> Github: <a class = 'text-secondary border-bottom' href = 'https://github.com/MikeVita4'> Github/Miguel </a> </li>
+                    <li class = 'contact-list-item'> <button class = 'btn btn-secondary' data-val = 'miguelmontieljr@gmail.com' data-toggle = 'modal' data-target = '.email-modal-lg'> Contact </button> </li>
                 </ul>
 
             </div> 
@@ -79,10 +101,10 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'> </script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- Added -->  
-    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'> </script> 
     <script src = 'scripts/main.js' ></script>
+    <script src = 'scripts/contact-us.js'></script> 
 </body>
 </html>

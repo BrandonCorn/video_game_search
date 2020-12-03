@@ -68,6 +68,7 @@ const searchByInput = async input=> {
         success: data => {
             setGames(input, data); 
             setCurrentGames(data);
+            console.log(data); 
             initGameList(data);  
         },
         error: err => {
@@ -81,6 +82,7 @@ $('#search-form').on('submit', e => {
     let input = document.getElementById('search').value
     $('#search-input').text(input)
     let games = getGames(input)
+    console.log(games); 
     if (!validateGames(games)) {
         searchByInput(input)
     }
