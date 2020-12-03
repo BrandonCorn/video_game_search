@@ -12,6 +12,10 @@ body{
     color: white; 
 }
 
+.navbar, .navbar-brand {
+    font-size: 1.25em;
+}
+
 .navbar-brand {
     color: white;  
 }
@@ -331,8 +335,13 @@ footer{
     max-width: 70%;
 }
 
+.card-block {
+    color: rgb(255, 255, 255);
+    background: black;
+}
+
 .card {
-    background-color: rgb(255, 255, 255);
+    background: black;
 }
 
 
@@ -358,3 +367,4 @@ footer{
     width: 50%; 
     height: 70%; 
 }
+

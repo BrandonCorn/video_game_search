@@ -101,44 +101,45 @@
                  <div class="row">
                      <div class="col-sm-13">
                          <div class="card-group">
-                             <div class="card">
-                                 <div class="card-block">
-                                     <h4 class="card-title"><%=bestGames[0].genres.map(gen => gen.name + ' ') %> </h4>
+                             <div class="card border-light mb-4">
+                                 <div class="card-block text-center">
+                                     <h4 class="card-title"><%=bestGames[0].genres.map(gen => ' ' + gen.name) %> </h4>
                                      <% if(bestGames){ %> 
                                         <h6 class="card-subtitle"><%=bestGames[0].name %> </h6>
                                      <% } %> 
                                  </div>
-                                 <img src='<%=bestGames[0].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
-                                 <div class="card-block">
+                                 <img class="mx-auto d-block" src='<%=bestGames[0].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
+                                 <div class="card-block text-center">
                                      <p class="card-text"><%=bestGames[0].summary %> </p>
-                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[0].id%>/<%=bestGames[0].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a>
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[0].id%>/<%=bestGames[0].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Learn more</button></a>
                                  </div>
                              </div>
 
-                             <div class="card">
-                                 <div class="card-block">
-                                     <h4 class="card-title"><%=bestGames[1].genres.map(gen => gen.name + ' ') %>  </h4>
+                             <div class="card border-light mb-4">
+                                 <div class="card-block text-center">
+                                     <h4 class="card-title"><%=bestGames[1].genres.map(gen => ' ' + gen.name) %>  </h4>
                                      <% if(bestGames){ %> 
                                         <h6 class="card-subtitle"><%=bestGames[1].name %> </h6>
                                      <% } %> 
                                  </div>
-                                 <img src='<%=bestGames[1].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
-                                 <div class="card-block">
+                                 <img class="mx-auto d-block" src='<%=bestGames[1].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
+                                 <div class="card-block text-center">
                                      <p class="card-text"><%=bestGames[1].summary %> </p>
-                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[1].id%>/<%=bestGames[1].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a> 
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[1].id%>/<%=bestGames[1].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Learn more</button></a> 
                                  </div>
                              </div>
-                             <div class="card">
-                                 <div class="card-block">
-                                     <h4 class="card-title"><%=bestGames[2].genres.map(gen => gen.name + ' ') %> </h4>
+                             
+                             <div class="card border-light mb-4">
+                                 <div class="card-block text-center">
+                                     <h4 class="card-title"><%=bestGames[2].genres.map(gen => ' ' + gen.name) %> </h4>
                                      <% if(bestGames){ %> 
                                         <h6 class="card-subtitle"><%=bestGames[2].name %> </h6>
                                      <% } %> 
                                  </div>
-                                 <img src='<%=bestGames[2].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
-                                 <div class="card-block">
+                                 <img class="mx-auto d-block" src='<%=bestGames[2].cover.url.replace("t_thumb","t_cover_big") %>' alt="Game 4">
+                                 <div class="card-block text-center">
                                      <p class="card-text"><%=bestGames[2].summary %> </p>
-                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[2].id%>/<%=bestGames[2].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">learn more</button></a>
+                                     <a class = 'text-decoration-none' href = '/game/<%=bestGames[2].id%>/<%=bestGames[2].name%>/'> <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Learn more</button></a>
                                  </div>
                              </div>
                          </div>
