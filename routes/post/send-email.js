@@ -10,6 +10,6 @@ module.exports = async (req, res) => {
         text: message
     } 
     const sendEmail = await sendMail(mailOptions)
-    if (!sendEmail) return res.status(400).send('Error sending email')
-    return res.status(200).send('Email sent successfully!')
+    if (!sendEmail) return res.status(400).send({status: 'Error', message: 'Error sending email'})
+    return res.status(200).send({status: 'Success', message: 'Email sent successfully!'})
 }
