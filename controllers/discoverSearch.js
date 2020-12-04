@@ -16,7 +16,7 @@ const searchUpcomingReleases = (token, platform) => {
                 'Authorization': bearer, 
                 'Content-Type': 'text/plain',
             },
-            data: `fields *, game.genres.name, game.name, game.cover.url, game.summary, date; where game.platforms = {${platform}} & date > 1606845655119; sort date desc; limit 10;`
+            data: `fields *, game.genres.name, game.name, game.cover.url, game.summary, date; where game.platforms = {${platform}} & date > ${Date.now()}; sort date desc; limit 10;`
         })
         .then( apiRes => {
             resolve(apiRes.data);
