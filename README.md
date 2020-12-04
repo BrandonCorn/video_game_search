@@ -1,12 +1,21 @@
 # Video Game Search | Brandon Corn & Miguel Montiel
 
-### Heroku link: https://video-game-search.herokuapp.com/contact-us
+### Heroku link: https://video-game-search.herokuapp.com/
 #
 ## Instructions
-If using Gitpod, simply open the repository and everything will load automatically.  
-To run it, open a new terminal and type `node index.js`, and you will be redirected to the website.  
-  
-If using VSCode or any other code editor, ***Brandon, finish this part!***
+* Home
+    * Welcome message
+    * Button linked to discover to find out about games
+* Discover
+    * Upcoming games
+    * Popular games of the moment
+    * Developers' favorite games
+* All Games
+    * Search for any game!
+    * Search by name or letter available 
+* Contact Us
+    * Information about the developers
+    * Contact form
 
 #
 ## IGDB API
@@ -17,8 +26,9 @@ This project uses the IGDB API in order to have access to thousands of games in 
 * Home, 2 pages on API, and contact
 * Working contact form 
 * Interaction with IGDB API
-    * Recently released games
-    * Best games
+    * Upcoming games
+    * Popular games games
+    * Favorite games
     * Search games by:
         * name
         * by letter
